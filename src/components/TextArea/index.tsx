@@ -1,7 +1,8 @@
 import './index.scss'
 
+
 const TextArea = () => {
-  return <textarea className="text-area" placeholder="Paste your text here..." />
+  return <textarea className="text-area" placeholder="Paste your text here..." autoFocus/>
 }
 
 export default TextArea

@@ -5,6 +5,9 @@ import Navbar from './components/Navbar'
 import ResultBox from './components/ResultBox'
 import TextArea from './components/TextArea'
 
+
+
+
 const App = () => {
   return (
     <>
