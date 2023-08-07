@@ -5,8 +5,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ResultBox from './components/ResultBox'
 import TextArea from './components/TextArea'
-
-
+import {pronouns} from './/data/pronouns'
 
 
 const App: React.FC = () => {
@@ -45,8 +44,20 @@ const App: React.FC = () => {
     // Calculate sentence, paragraph, and pronoun counts 
     const sentenceCount = text.trim().split(/[.!?]/).filter(Boolean).length; 
     const paragraphCount = text.trim().split(/\n/).filter(Boolean).length;; 
-    const pronounCount = 0; 
+    
+    const lowercaseText = text.toLowerCase();
+    const pronounOccurrences: { [pronoun: string]: number } = {};
 
+    pronouns.forEach(pronoun => {
+      const pronounRegExp = new RegExp(`\\b${pronoun.toLowerCase()}\\b`, 'g');
+      const matches = lowercaseText.match(pronounRegExp);
+
+      pronounOccurrences[pronoun] = matches ? matches.length : 0;
+    });
+
+    const pronounCount =  Object.values(pronounOccurrences).reduce((total, count) => total + count, 0); 
+
+      console.log("PC", pronounCount)
     // Update the resultBar array with the new counts
     setResultBar([
       {
