@@ -31,8 +31,19 @@ const App: React.FC = () => {
       value: 0,
     },
   ];
+  const initialBottomResultBar = [
+    {
+      title: 'Average Reading Time:',
+      value: '-',
+    },
+    {
+      title: 'Longest word:',
+      value: '-',
+    },
+  ];
 
   const [resultBar, setResultBar] = useState(initialResultBar);
+  const [bottomResultBar, setBottomResultBar] = useState(initialBottomResultBar);
 
   const handleTextChange = (text: string) => {
     // Calculate word count
@@ -57,7 +68,7 @@ const App: React.FC = () => {
 
     const pronounCount =  Object.values(pronounOccurrences).reduce((total, count) => total + count, 0); 
 
-      console.log("PC", pronounCount)
+    const avgReadingTime = Math.ceil(wordCount / 255);
     // Update the resultBar array with the new counts
     setResultBar([
       {
@@ -81,6 +92,17 @@ const App: React.FC = () => {
         value: pronounCount,
       },
     ]);
+
+    setBottomResultBar([
+      {
+        title: 'Average Reading Time:',
+        value: `~${avgReadingTime} minute${avgReadingTime !== 1 ? 's' : ''}`,
+      },
+      {
+        title: 'Longest word:',
+        value: '-',
+      },
+    ]);
   };
 
 
@@ -91,7 +113,7 @@ const App: React.FC = () => {
         <div className="main-app">
           <ResultBox resultBar={resultBar}/>
           <TextArea onTextChange={handleTextChange}/>
-          <BottomResultBox />
+          <BottomResultBox bottomResultBar={bottomResultBar} />
         </div>
       </div>
       <Footer />

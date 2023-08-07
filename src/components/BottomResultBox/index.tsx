@@ -1,16 +1,11 @@
 import './index.scss'
 
-const BottomResultBox = () => {
-  const bottomResultBar = [
-    {
-      title: 'Average Reading Time:',
-      value: '-',
-    },
-    {
-      title: 'Longest word:',
-      value: '-',
-    },
-  ]
+interface BottomResultBoxProps {
+  bottomResultBar: { title: string; value: string }[];
+}
+
+const BottomResultBox: React.FC<BottomResultBoxProps> = ({ bottomResultBar }) => {
+
 
   return (
     <div className="bottom-result-bar">
@@ -24,4 +19,4 @@ const BottomResultBox = () => {
   )
 }
 
-export default BottomResultBox
+export default BottomResultBox;
