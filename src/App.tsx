@@ -52,10 +52,11 @@ const App: React.FC = () => {
     // Calculate character count
     const charCount = text.length;
 
-    // Calculate sentence, paragraph, and pronoun counts 
+    // Calculate sentence and paragraph counts 
     const sentenceCount = text.trim().split(/[.!?]/).filter(Boolean).length; 
     const paragraphCount = text.trim().split(/\n/).filter(Boolean).length;; 
     
+    //Calculate pronoun counts
     const lowercaseText = text.toLowerCase();
     const pronounOccurrences: { [pronoun: string]: number } = {};
 
@@ -69,7 +70,20 @@ const App: React.FC = () => {
     const pronounCount =  Object.values(pronounOccurrences).reduce((total, count) => total + count, 0); 
 
     const avgReadingTime = Math.ceil(wordCount / 255);
-    // Update the resultBar array with the new counts
+
+  // Find the longest word
+  const words = text.split(/\s+/).filter(Boolean);
+  let longestWord = '';
+  for (const word of words) {
+  // Remove punctuation from the word using a regular expression
+    const cleanedWord = word.replace(/[.!?,:;]/g, '');
+
+    if (cleanedWord.length > longestWord.length) {
+      longestWord = cleanedWord;
+    }
+  }
+
+  // Update the resultBar array with the new counts
     setResultBar([
       {
         title: 'Words',
@@ -100,7 +114,7 @@ const App: React.FC = () => {
       },
       {
         title: 'Longest word:',
-        value: '-',
+        value: longestWord,
       },
     ]);
   };
