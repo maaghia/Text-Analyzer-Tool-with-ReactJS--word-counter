@@ -1,7 +1,11 @@
 import './index.scss'
+interface ResultBoxProps {
+  resultBar: { title: string; value: number }[];
+}
 
-const ResultBox = () => {
-  const resultBar = [
+
+const ResultBox: React.FC<ResultBoxProps> = ({ resultBar }) => {
+ /* const resultBar = [
     {
       title: 'Words',
       value: 0,
@@ -22,8 +26,8 @@ const ResultBox = () => {
       title: 'Pronouns',
       value: 0,
     },
-  ]
-
+  ]*/
+  
   return (
     <div className="result-bar">
       {resultBar.map(({ title, value }) => (
@@ -36,4 +40,4 @@ const ResultBox = () => {
   )
 }
 
-export default ResultBox
+export default ResultBox;
