@@ -5,28 +5,7 @@ interface ResultBoxProps {
 
 
 const ResultBox: React.FC<ResultBoxProps> = ({ resultBar }) => {
- /* const resultBar = [
-    {
-      title: 'Words',
-      value: 0,
-    },
-    {
-      title: 'Characters',
-      value: 0,
-    },
-    {
-      title: 'Sentences',
-      value: 0,
-    },
-    {
-      title: 'Paragraphs ',
-      value: 0,
-    },
-    {
-      title: 'Pronouns',
-      value: 0,
-    },
-  ]*/
+
   
   return (
     <div className="result-bar">

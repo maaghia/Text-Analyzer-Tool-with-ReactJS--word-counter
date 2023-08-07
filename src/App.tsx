@@ -42,10 +42,10 @@ const App: React.FC = () => {
     // Calculate character count
     const charCount = text.length;
 
-    // Calculate sentence, paragraph, and pronoun counts (placeholders for now)
-    const sentenceCount = 0; // Replace with actual sentence count
-    const paragraphCount = 0; // Replace with actual paragraph count
-    const pronounCount = 0; // Replace with actual pronoun count
+    // Calculate sentence, paragraph, and pronoun counts 
+    const sentenceCount = text.trim().split(/[.!?]/).filter(Boolean).length; 
+    const paragraphCount = text.trim().split(/\n/).filter(Boolean).length;; 
+    const pronounCount = 0; 
 
     // Update the resultBar array with the new counts
     setResultBar([
